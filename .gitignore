@@ -1,0 +1,68 @@
+# ── Private / Agent / Local ──────────────────────────────────────
+agent_chat/
+private/
+.env
+.env.local
+*.local
+
+# ── WordPress / Plugin Build Artifacts ──────────────────────────
+wp-content/
+wp-admin/
+wp-includes/
+wp-config.php
+wp-config-sample.php
+*.sql
+*.sql.gz
+
+# ── Composer ────────────────────────────────────────────────────
+vendor/
+composer.lock
+
+# ── npm / Node (if frontend assets are added later) ────────────
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# ── Docker ──────────────────────────────────────────────────────
+.docker/
+docker-compose.override.yml
+tests/wordpress/*.tar.gz
+tests/wordpress/*.zip
+
+# ── OS files ────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+*.orig
+
+# ── IDE / Editor ────────────────────────────────────────────────
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.netbeans/
+.project
+.classpath
+.settings/
+
+# ── Logs / Reports ──────────────────────────────────────────────
+*.log
+wp-debug.log
+error_log
+tests/_output/
+tests/_support/_generated/
+
+# ── PHPCS / Static Analysis ────────────────────────────────────
+.phpcs-cache
+.phpunit.result.cache
+
+# ── Python (test runner) ─────────────────────────────────────
+__pycache__/
+*.pyc
+
+dist/
+tasks/

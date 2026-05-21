@@ -1,0 +1,27 @@
+{
+    "name": "custom-starter/woo-product-syncer",
+    "description": "Sync WooCommerce products between stores with source, receiver, and bidirectional modes.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "version": "0.3.0",
+    "require": {
+        "php": ">=7.4",
+        "composer/installers": "^2.0"
+    },
+    "require-dev": {
+        "wp-coding-standards/wpcs": "^3.0",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "phpunit/phpunit": "^9.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "phpcs": "phpcs --standard=phpcs.xml",
+        "phpcbf": "phpcbf --standard=phpcs.xml"
+    }
+}
