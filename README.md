@@ -6,7 +6,8 @@
 [![WordPress](https://img.shields.io/badge/WordPress-5.6%2B-21759B?logo=wordpress)](https://wordpress.org)
 [![WooCommerce](https://img.shields.io/badge/WooCommerce-latest-96588A?logo=woocommerce)](https://woocommerce.com)
 [![License](https://img.shields.io/badge/License-GPL%20v2%2B-blue.svg)](LICENSE)
-[![Plugin Version](https://img.shields.io/badge/Version-0.3.0-green.svg)](https://github.com/lirrensi/woo-product-syncer)
+[![Latest Release](https://img.shields.io/github/v/release/lirrensi/wp-woo-productsyncer)](https://github.com/lirrensi/wp-woo-productsyncer/releases)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/lirrensi/wp-woo-productsyncer/release.yml?label=release)](https://github.com/lirrensi/wp-woo-productsyncer/actions/workflows/release.yml)
 
 Install the same plugin on each WooCommerce store. Configure each site with a role — **Source**, **Receiver**, **Both**, or **Disabled** — and let products flow between your stores with granular control over exactly what syncs.
 
@@ -65,7 +66,7 @@ Each sync group can be toggled independently:
 
 ### Via WordPress admin
 
-1. Download the [latest release](https://github.com/lirrensi/woo-product-syncer/releases) ZIP.
+1. Download the [latest release](https://github.com/lirrensi/wp-woo-productsyncer/releases) ZIP.
 2. Go to **Plugins → Add New → Upload Plugin**.
 3. Upload the ZIP and activate.
 4. Go to **Woo Product Syncer** in the admin menu to configure.
@@ -182,6 +183,24 @@ make down     # Stop containers
 ```
 
 Requires Docker Desktop, `make`, and Python 3.10+.
+
+### Creating a release
+
+Releases are automated via GitHub Actions. To publish a new version:
+
+```bash
+# 1. Update version in woo-product-syncer.php and composer.json
+# 2. Update the changelog in README.md
+# 3. Commit and push
+git add -A
+git commit -m "Bump version to v0.x.0"
+
+# 4. Tag and push — the CI workflow builds the ZIP and creates the release
+git tag v0.x.0
+git push origin v0.x.0
+```
+
+The [Release workflow](.github/workflows/release.yml) handles the rest: builds the plugin ZIP, attaches it to the release, and generates release notes from commit history.
 
 ---
 

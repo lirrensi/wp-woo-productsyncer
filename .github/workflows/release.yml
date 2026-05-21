@@ -1,0 +1,62 @@
+# ────────────────────────────────────────────────────────────
+# Woo Product Syncer — Release Workflow
+# ────────────────────────────────────────────────────────────
+# Trigger: push a tag matching v* (e.g., v0.3.0, v1.0.0)
+#
+# Produces:
+#   - A GitHub Release with the tag as the release name
+#   - woo-product-syncer.zip attached as a downloadable asset
+#   - Auto-generated release notes from commits since last tag
+#
+# Usage:
+#   git tag v0.4.0
+#   git push origin v0.4.0
+# ────────────────────────────────────────────────────────────
+
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Build plugin ZIP
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build plugin archive
+        run: |
+          # Create staging directory matching WordPress plugin structure
+          mkdir -p build/woo-product-syncer/includes
+
+          # Plugin entry point and uninstall handler
+          cp woo-product-syncer.php build/woo-product-syncer/
+          cp uninstall.php build/woo-product-syncer/
+
+          # Readme (lowercase for WordPress conventions)
+          cp README.md build/woo-product-syncer/readme.md
+
+          # All PHP classes
+          cp includes/*.php build/woo-product-syncer/includes/
+
+          # Create the distributable ZIP
+          cd build
+          zip -r woo-product-syncer.zip woo-product-syncer/
+
+      - name: List archive contents
+        run: |
+          unzip -l build/woo-product-syncer.zip | head -30
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/woo-product-syncer.zip
+          generate_release_notes: true
+          name: Release ${{ github.ref_name }}
