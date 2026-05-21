@@ -92,11 +92,9 @@ The comprehensive test suite is modular, split into 9 focused modules plus a sha
 
 ### Key Test Files
 
-| File | Lines | Purpose |
-|------|-------|---------|
-| `tests/scripts/run-tests.py` | 1600+ | Cross-platform orchestrator, helpers, module implementations |
-| `tests/scripts/run-tests.ps1` | 348 | Legacy single-script test (kept for backward compat) |
-| `tests/scripts/run-all-tests.ps1` / `run-tests-*.ps1` | legacy | Legacy PowerShell suite retained for reference |
+| File | Purpose |
+|------|---------|
+| `tests/scripts/run-tests.py` | Cross-platform orchestrator, helpers, all 9 module implementations (1600+ lines) |
 
 ---
 
@@ -173,7 +171,7 @@ Internal (cross-container) base URL: `http://receiver` (plugin appends REST path
 | `includes/class-wpsyncer-cli.php` | WP-CLI commands |
 | `Makefile` | Dev environment automation |
 | `tests/docker-compose.yml` | Multi-container test environment |
-| `tests/scripts/run-tests.ps1` | Automated end-to-end test runner |
+| `tests/scripts/run-tests.py` | Cross-platform test orchestrator (9 modules) |
 | `tests/wordpress/Dockerfile` | Custom WordPress image with WP-CLI |
 
 ---

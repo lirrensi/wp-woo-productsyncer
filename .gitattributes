@@ -1,0 +1,34 @@
+# ── Woo Product Syncer — Git Attributes ─────────────────────────
+# Ensures consistent line endings and clean export archives.
+
+# Auto-detect text files and normalize to LF
+* text=auto eol=lf
+
+# Explicitly declare binary files
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.svg    binary
+*.ico    binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.eot    binary
+*.zip    binary
+*.tar.gz binary
+
+# Files to exclude from distribution archives
+/.gitattributes     export-ignore
+/.gitignore         export-ignore
+/.editorconfig      export-ignore
+/.github/           export-ignore
+/AGENTS.md          export-ignore
+/CONTRIBUTING.md    export-ignore
+/SECURITY.md        export-ignore
+/Makefile           export-ignore
+/composer.json      export-ignore
+/pack-live-plugin.ps1 export-ignore
+/tests/             export-ignore
+/docs/              export-ignore
+/phpcs.xml          export-ignore
